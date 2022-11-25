@@ -13,6 +13,6 @@ def find_word(sentence, word):
     return result
 
 
-s = 'find a word in some sentence'
-w = 'in'
+s = str(input('Input sentence: '))  
+w = str(input('Input finding thing: '))
 print(find_word(s, w))
