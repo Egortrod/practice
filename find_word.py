@@ -13,6 +13,12 @@ def find_word(sentence, word):
     return result
 
 
+
+def find_word2(sentencee, wordd):
+    return([pos for pos, char in enumerate(sentencee) if char == wordd])
+
+
 s = str(input('Input sentence: '))  
 w = str(input('Input finding thing: '))
 print(find_word(s, w))
+print(find_word2(s, w))
