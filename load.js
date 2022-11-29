@@ -24,7 +24,7 @@ class Container {
     this.contentToCapacityPercent = (
       (this.content / this.capacity) *
       100
-    ).toFixed(2);
+    ).toFixed(2); 
     this.minContent = capacity * Container.MIN_CAPACITY_RATIO;
     this.maxContent = capacity * Container.MAX_CAPACITY_RATIO;
   }
@@ -86,5 +86,6 @@ let container = getCurrentContainer(belt, containers);
     if (container.content >= container.maxContent) return loop();
     container.load(TICK * KEK_FLOW_SPEED);
     loop();
+    // console.log()
   }, TICK);
 })();
