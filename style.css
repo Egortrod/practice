@@ -5,25 +5,25 @@ div {
     background: #333333;
   }
   
-  #main {
+#main {
     color: white;
-    width: 750px;
+    width: 175px;
   }
   
-  .text-white {
+.text-white {
     color: white;
   }
   
-  .alert {
-    height: 350px;
+.alert {
+    height: 75px;
     color: gray;
   }
   
-  div {
+div {
     background: blue;
   }
   
-  .alert-warning {
+.alert-warning {
     background: #000000;
     color: yellow;
   }
