@@ -43,6 +43,31 @@
 
 # dict_compare(dict1, dict2),
 
+
+# r = []
+# for key in set([*d1.keys(), *d2.keys()]):
+#     if key in d2.keys():
+#         r.append({
+#         "key": key,
+#         "value": d2[key],
+#         "type": "+"
+#         })
+#     if key in d1.keys():
+#         r.append({
+#         "key": key,
+#         "value": d1[key],
+#         "type": "-"
+#         })
+#     if key in d1.keys() and key in d2.keys():
+#         if d2[key] == d1[key]:
+#             r.append({
+#             "key": key, 
+#             "value": d2[key], 
+#             "type": "="
+#             })
+
+# print(r)
+
 d1 = {
   "host": "hexlet.io",
   "timeout": 50,
@@ -55,27 +80,98 @@ d2 = {
   "host": "hexlet.io"
 }
 
-
 r = []
-for key in set([*d1.keys(), *d2.keys()]):
+for key in sorted(set([*d1.keys(), *d2.keys()])):
+    if key in d1.keys() and key in d2.keys():
+      if d2[key] == d1[key]:
+            r.append({
+            "key": key, 
+            "value": d2[key], 
+            "type": " "
+            })     
     if key in d2.keys():
         r.append({
         "key": key,
         "value": d2[key],
-        "type": "exclude"
+        "type": "+"
         })
     if key in d1.keys():
         r.append({
         "key": key,
         "value": d1[key],
-        "type": "include"
+        "type": "-"
         })
-    if key in d1.keys() and key in d2.keys():
-        if d2[key] == d1[key]:
-            r.append({
-            "key": key, 
-            "value": d2[key], 
-            "type": "same"
-            })
 
-print(r)
+
+for i in r:
+  print(i['type'], i['key'], ':', i['value'])
+
+
+# d1 = {
+#   "host": "hexlet.io",
+#   "timeout": 50,
+#   "proxy": "123.234.53.22",
+#   "follow": "false"
+# }
+# d2 = {
+#   "timeout": 20,
+#   "verbose": "true",
+#   "host": "hexlet.io"
+# }
+
+# d3 = [{'key':'key1', 'value':'value1', 'type':' '}, {'key', 'value', 'type' : '-'}, {    'type' : '-'}, {'type' : '+'}]
+
+
+# for index in dict.index():
+  
+
+def generate_diff(data1: dict, data2: dict):
+    diff = []
+    for key in sorted(set([*data1.keys(), *data2.keys()])):
+        if key in data1.keys() and key in data2.keys():
+            if data1[key] == data2[key]:
+                diff.append({
+                    "key": key,
+                    "value": data1[key],
+                    "type": ' '
+                })
+            elif data1[key] != data2[key]:
+                diff.append({
+                    "key": key,
+                    "value": data1[key],
+                    "type": '-'
+                })
+                diff.append({
+                    "key": key,
+                    "value": data2[key],
+                    "type": '+'
+                })
+        if key in data1.keys() and key not in data2.keys():
+            diff.append({
+                "key": key,
+                "value": data1[key],
+                "type": '-'
+            })
+        if key not in data1.keys() and key in data2.keys():
+            diff.append({
+                "key": key,
+                "value": data2[key],
+                "type": '+'
+            })
+    result = []
+    for i in key:
+      result += i
+
+
+text1 = {
+  "host": "hexlet.io",
+  "timeout": 50,
+  "proxy": "123.234.53.22",
+  "follow": "false"
+}
+text2 = {
+  "timeout": 20,
+  "verbose": "true",
+  "host": "hexlet.io"
+}
+print(generate_diff(text1, text2))
