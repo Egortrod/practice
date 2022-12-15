@@ -56,7 +56,6 @@ const getCurrentContainer = (belt, containers) =>
     ? containers[belt.offset]
     : containers[belt.offset + belt.width];
 let container = getCurrentContainer(belt, containers);
-
 (function loop() {
   setTimeout(() => {
     const unloadSpeed =
