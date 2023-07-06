@@ -10,6 +10,6 @@ def to_del(data):
         out += f'{key}: {item}\n'
     return out[:-1]
 
-user_data = 'abracadabra'
+user_data = 'macarena'
 a = to_del(user_data)
 print(a)
