@@ -1,4 +1,4 @@
-import random
+from random import randint
 
 def quicksort(nums):
    if len(nums) <= 1:
@@ -10,6 +10,25 @@ def quicksort(nums):
    b_nums = [n for n in nums if n > q]
    return quicksort(l_nums) + e_nums + quicksort(b_nums)
 
-data = [1, 8 ,5 ,4 , 7]
+def qsort(array):
+    less = []
+    equal = []
+    greater = []
+    if len(array) > 1:
+        pivot = array[0]
+        for x in array:
+            if x < pivot:
+                less.append(x)
+            elif x == pivot:
+                equal.append(x)
+                print(equal)
+            elif x > pivot:
+                greater.append(x)
+        return qsort(less) + equal + qsort(greater)
+    else:
+        return array
+    
 
-print(quicksort(data))
+user_data = [randint(1, 50) for _ in range(20)]
+print(f'user arr: {user_data}')
+print(f'sorted arr: {qsort(user_data)}')
