@@ -19,6 +19,25 @@ def aaa(user_arr):
         
             
     # return data
+
+
+def aaaa(timeset):
+    begin_times = [i[0] for i in timeset]
+    end_times = [i[1] for i in timeset]
+    begin_times = sorted(begin_times)
+    end_times = sorted(end_times)
+    counter = 0
+    while len(begin_times) > 0:
+        begin_time = begin_times.pop(0)
+        end_time = end_times[0]
+        if end_time <= begin_time:
+            end_times.pop(0)
+        else:
+            counter += 1
+    return counter
+    
+userdata = [[1, 30], [10, 15], [20, 25]]
+print(aaaa(userdata))
     
     
-print(aaa(arr))
+# print(aaa(arr))
